@@ -10,56 +10,57 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
+        library: 'HotZone',
+        libraryTarget: 'umd',
         filename: 'hotzone.min.js'
     },
     module: {
-        rules: [
-            {
-                test: /\.html$/,
+        rules: [{
+            test: /\.html$/,
                 // html-loader 导致 regular 解析出问题（<> 等特殊运算符会被转译）
                 // 是否压缩的总开关，false 为关闭，关闭后效果完全等价于 raw-loader
-                loaders: [`rgl-tplmin-loader?${JSON.stringify({
+            loaders: [`rgl-tplmin-loader?${JSON.stringify({
                     minimize: true,
                     comments: {
                         html: false
                     }
                 })}`],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.js$/,
-                loaders: [`babel-loader?${JSON.stringify({
+            exclude: /node_modules/
+        },
+        {
+            test: /\.js$/,
+            loaders: [`babel-loader?${JSON.stringify({
                     presets: ['es2015', 'stage-2'],
                     plugins: ['transform-runtime'],
                     comments: !isProd,              // 开发环境开启注释
                     cacheDirectory: !isProd,        // 开发环境开启缓存
                     compact: true
                 })}`],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
-                options: {
+            exclude: /node_modules/
+        },
+        {
+            test: /\.(png|jpg|gif|svg)$/,
+            loader: 'file-loader',
+            options: {
                     name: '[name].[ext]?[hash]'
                 }
-            },
-            {
-                test: /\.mcss$/,
-                loader: isProd ? ExtractTextPlugin.extract({
+        },
+        {
+            test: /\.mcss$/,
+            loader: isProd ? ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader!mcss-loader'
                 }) : 'style-loader!css-loader!mcss-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.css$/,
-                loader: isProd ? ExtractTextPlugin.extract({
+            exclude: /node_modules/
+        },
+        {
+            test: /\.css$/,
+            loader: isProd ? ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader'
                 }) : 'style-loader!css-loader',
-                exclude: /node_modules/
-            }
+            exclude: /node_modules/
+        }
         ]
     },
     externals: {
