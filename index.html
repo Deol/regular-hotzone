@@ -5,15 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HotZone</title>
-    <!-- Latest compiled and minified CSS -->
+    <!-- import reset.css -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <!-- import hotzone.css -->
     <link rel="stylesheet" href="./dist/hotzone.min.css">
 </head>
 <body>
     <div id="box"></div>
-    <!-- 引入regular.js -->
+    <!-- import regular.js -->
     <script src="https://rawgit.com/regularjs/regular/master/dist/regular.js"></script>
+    <!-- import the hotzone component -->
     <script src="./dist/hotzone.min.js"></script>
+    <!-- usage -->
     <script>
         var Page = Regular.extend({
             template: '<HotZone image={image} zones={zones} isEdit={isEdit} on-getInfo={this.getInfo($event)}></HotZone>',

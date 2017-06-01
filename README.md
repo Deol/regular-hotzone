@@ -1,4 +1,4 @@
-# regular-hotzone(wip)
+# regular-hotzone
 
 [![version](https://img.shields.io/npm/v/regular-hotzone.svg)](https://www.npmjs.com/package/regular-hotzone) 
 [![Build Status](https://img.shields.io/travis/Deol/regular-hotzone.svg)](https://travis-ci.org/Deol/regular-hotzone)
@@ -6,11 +6,19 @@
 
 [![nodei](https://nodei.co/npm/regular-hotzone.png?downloads=true)](https://www.npmjs.com/package/regular-hotzone)
 
-Hot Zone with Regularjs.
+A HotZone Component based on [RegularJS](https://github.com/regularjs/regular).
 
-## Require
+## CDN
 
- - [Regularjs](https://github.com/regularjs/regular)
+[**unpkg**](https://unpkg.com)
+
+```sh
+# css
+//unpkg.com/regular-hotzone/dist/hotzone.min.css
+
+# js
+//unpkg.com/regular-hotzone/dist/hotzone.min.js
+```
 
 ## Installation
 
@@ -25,14 +33,6 @@ npm run startdev
 npm run build
 ```
 
-## CDN
+## LICENSE
 
-[**unpkg**](https://unpkg.com)
-
-```sh
-# css
-https://unpkg.com/regular-hotzone/dist/hotzone.min.css
-
-# js
-https://unpkg.com/regular-hotzone/dist/hotzone.min.js
-```
+MIT

@@ -2,8 +2,8 @@
  * Created by Aeo on 2017/5/22.
  * 热区组件，使用方式如下：
  * <HotZone image={image} zones={zones} isEdit={isEdit} on-getInfo={this.getInfo($event)}></HotZone>
- * image - 传入热区图片
- * zones - 传入热区数据
+ * image - 热区图片
+ * zones - 热区数据
  * isEdit - 标记当前该组件是否处于编辑状态
  * on-getInfo - 获取热区数据方法
  */
