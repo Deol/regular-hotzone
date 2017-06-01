@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        filename: 'hotzone.js'
+        filename: 'hotzone.min.js'
     },
     module: {
         rules: [
@@ -89,7 +89,7 @@ if (isProd) {
             }
         }),
         new ExtractTextPlugin({
-            filename: 'hotzone.css',
+            filename: 'hotzone.min.css',
             allChunks: true
         }),
         new webpack.optimize.UglifyJsPlugin({
