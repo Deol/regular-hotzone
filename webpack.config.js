@@ -70,7 +70,8 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        noInfo: true
+        noInfo: true,
+        hot: true
     },
     performance: {
         hints: false
