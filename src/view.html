@@ -1,0 +1,21 @@
+{#if image}
+<div class="hz-m-wrap {class}" r-class={{'hz-m-view': !isEdit}}>
+    <img class="hz-u-img" src={image} />
+    <ul
+        class="hz-m-area"
+        {#if isEdit}
+        r-addItem
+        {/if}
+    >
+        {#list zones as item by item_index}
+        <Zone
+            class="hz-m-item"
+            isEdit={isEdit}
+            index={item_index}
+            setting={zones[item_index]}
+            on-delItem={this.removeItem($event)}
+        ></Zone>
+        {/list}
+    </ul>
+</div>
+{/if}

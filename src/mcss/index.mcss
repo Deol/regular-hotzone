@@ -1,0 +1,166 @@
+@import './_reset.mcss';
+
+.hz-m-wrap {
+  position: relative;
+  /*overflow: hidden;*/
+  .hz-u-img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    user-select: none;
+  }
+  .hz-m-area {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: crosshair;
+  }
+  .hz-m-item {
+    position: absolute;
+    display: block;
+    &:hover {
+      .hz-m-info {
+        display: block;
+      }
+    }
+  }
+  .hz-m-info {
+    display: none;
+    position: absolute;
+    padding: 5px 10px;
+    line-height: 20px;
+    opacity: .8;
+    color: #fff;
+    background: #000;
+    cursor: default;
+    user-select: none;
+    white-space: nowrap;
+    a {
+      text-decoration: underline;
+      cursor: pointer;
+      color: #fff;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .hz-m-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 1px #0092fd;
+    background: #3bd4fc;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: .5;
+    &:hover {
+      .hz-u-close {
+        display: block;
+      }
+    }
+    .hz-u-close {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 18px;
+      height: 18px;
+      line-height: 16px;
+      color: #fff;
+      font-size: 18px;
+      background: #000;
+      user-select: none;
+      text-align: center;
+    }
+    .hz-u-edit {
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
+      background: url(//haitao.nos.netease.com/049e5b9c-8b72-4a75-9b34-5dcece11ab19.svg) no-repeat;
+      background-size: 100% 100%;
+    }
+    .hz-u-tip {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      user-select: none;
+      text-align: center;
+    }
+    .hz-u-square {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      opacity: .5;
+      user-select: none;
+      background-color: #fff;
+      border: 1px solid #25c3eb;
+    }
+    .hz-u-square-tl {
+      top: -5px;
+      left: -5px;
+      cursor: nw-resize;
+    }
+    .hz-u-square-tc {
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: n-resize;
+    }
+    .hz-u-square-tr {
+      top: -5px;
+      right: -5px;
+      cursor: ne-resize;
+    }
+    .hz-u-square-cl {
+      top: 50%;
+      left: -5px;
+      transform: translateY(-50%);
+      cursor: w-resize;
+    }
+    .hz-u-square-cr {
+      top: 50%;
+      right: -5px;
+      transform: translateY(-50%);
+      cursor: w-resize;
+    }
+    .hz-u-square-bl {
+      bottom: -5px;
+      left: -5px;
+      cursor: sw-resize;
+    }
+    .hz-u-square-bc {
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: s-resize;
+    }
+    .hz-u-square-br {
+      bottom: -5px;
+      right: -5px;
+      cursor: se-resize;
+    }
+  }
+  .hz-j-hidden {
+    li {
+      display: none;
+    }
+  }
+}
+
+// 查看态时图片 hover 样式控制
+.hz-m-view {
+  .hz-m-area {
+    cursor: default;
+  }
+  .hz-m-info a {
+    text-decoration: none;    
+  }
+}

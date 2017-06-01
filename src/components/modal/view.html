@@ -1,0 +1,49 @@
+<div class="hz-m-modal">
+    <div class="hz-modal_dialog">
+        <div class="hz-modal_hd">
+            <a class="hz-modal_close" on-click={this.cancel()}>
+                <i class="hz-u-icon hz-u-icon-close">×</i>
+            </a>
+            <h3 class="hz-modal_title">热区设置</h3>
+        </div>
+        <div class="hz-modal_bd">
+            <div class="hz-u-formitem" r-class={{'hz-f-ml0': !isUrl}}>
+                <span class="hz-formitem_tt">跳转链接：</span>
+                <div class="hz-formitem_ct">
+                    <input
+                        ref="link"
+                        type="text"
+                        title={link}
+                        class="hz-u-input"
+                        r-class={{'hz-u-input-error': !isUrl}}
+                        placeholder="链接以 http:// 或 https:// 开头"
+                        r-model={link | trim}
+                        on-focus={this.removeTip()}
+                        on-keydown={this.handleKeyDown($event, link, target)}
+                    />
+                    {#if !isUrl}
+                    <p class="hz-formitem_rqr">链接格式有误，请检查！</p>
+                    {/if}
+                </div>
+            </div>
+            <div class="hz-u-formitem">
+                <span class="hz-formitem_tt">打开方式：</span>
+                <label class="hz-formitem_ct hz-u-label">
+                    <input type="checkbox" r-model={target | toNum}>
+                    新窗口打开
+                </label>
+            </div>
+        </div>
+        <div class="hz-modal_ft">
+            <button
+                r-autofocus
+                on-click={this.ok(link, target)}
+                class="hz-u-btn hz-u-btn-primary"
+            >确认</button>
+            <button
+                class="hz-u-btn"
+                on-click={this.cancel()}
+            >取消</button>
+        </div>
+    </div>
+</div>

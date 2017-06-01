@@ -1,0 +1,71 @@
+{#if setting}
+{#if isEdit}
+<li
+    r-dragItem
+    class={class}
+    on-dblclick={this.setInfo($event)}
+    r-style={{top: zoneTop, left: zoneLeft, width: zoneWidth, height: zoneHeight}}
+>
+    <ul
+        r-changeSize
+        class="hz-m-box"
+        title="双击设置连接"
+        r-class={{'hz-j-hidden': tooSmall}}
+    >
+        {#if !setting.link}
+        <li class="hz-u-tip">双击设置链接</li>
+        {/if}
+        <li
+            class="hz-u-edit"
+            title="单击设置链接"
+            on-click={this.setInfo($event)}
+            on-mousedown={this.stopPropagation($event)}
+        ></li>
+        <li
+            title="删除该热区"
+            class="hz-u-close"
+            on-click={this.delItem($event, index)}
+            on-mousedown={this.stopPropagation($event)}
+        >×</li>
+        <li class="hz-u-square hz-u-square-tl" data-pointer="dealTL"></li>
+        <li class="hz-u-square hz-u-square-tc" data-pointer="dealTC"></li>
+        <li class="hz-u-square hz-u-square-tr" data-pointer="dealTR"></li>
+        <li class="hz-u-square hz-u-square-cl" data-pointer="dealCL"></li>
+        <li class="hz-u-square hz-u-square-cr" data-pointer="dealCR"></li>
+        <li class="hz-u-square hz-u-square-bl" data-pointer="dealBL"></li>
+        <li class="hz-u-square hz-u-square-bc" data-pointer="dealBC"></li>
+        <li class="hz-u-square hz-u-square-br" data-pointer="dealBR"></li>
+    </ul>
+    {#if setting.link}
+    <ul
+        class="hz-m-info"
+        r-hide={hideInfo}
+        on-mousedown={this.stopPropagation($event)}
+        r-style={{top: infoTop, bottom: infoBottom, left: infoLeft, right: infoRight, transform: infoTransform}}
+    >
+        <li>跳转链接：<a href={setting.link} target="_blank" title={setting.link}>点击跳转</a></li>
+        <li>打开方式：{setting.target | jumpWay}</li>
+    </ul>
+    {/if}
+</li>
+{#else}
+<li
+    class={class}
+    on-click={this.checkLink(setting.link)}
+    r-style={{top: zoneTop, left: zoneLeft, width: zoneWidth, height: zoneHeight}}
+>
+    <ul class="hz-m-box" title={setting.link}>
+        <li class="hz-u-tip">点击热区跳转</li>
+    </ul>
+    {#if setting.link}
+    <ul
+        class="hz-m-info"
+        r-style={{top: infoTop, bottom: infoBottom, left: infoLeft, right: infoRight, transform: infoTransform}}
+    >
+        <li>跳转链接：<a href={setting.link} target="_blank" title={setting.link}>点击跳转</a></li>
+        <li>打开方式：{setting.target | jumpWay}</li>
+    </ul>
+    {/if}
+</li>
+{/if}
+{/if}
