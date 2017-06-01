@@ -1,0 +1,8 @@
+// all rules： http://eslint.org/docs/rules/
+{
+  "extends": "kaola/esnext",
+  "rules": {
+    "arrow-body-style": 0,
+    "no-use-before-define": ["error", { "functions": false }]
+  }
+}

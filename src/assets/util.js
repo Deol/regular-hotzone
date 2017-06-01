@@ -132,6 +132,7 @@ _.throttle = function(fn, delay, debounce = false, immediate = false) {
     return function() {
         curr= +new Date();
         context = this;
+        // eslint-disable-next-line prefer-rest-params
         args = arguments;
         diff = curr - (debounce ? lastCall : lastExec) - delay;
         timer && clearTimeout(timer);
