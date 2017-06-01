@@ -21,8 +21,7 @@ module.exports = {
         loaders: ['rgl-tplmin-loader?' + JSON.stringify({
             minimize: true,
             comments: {
-                html: false,
-                rgl: false
+                html: false
             }
         })],
         exclude: /node_modules/
@@ -47,12 +46,18 @@ module.exports = {
       },
       {
         test: /\.mcss$/,
-        loader: 'style-loader!css-loader!mcss-loader',
+        loader: isProd ? ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader!mcss-loader'
+        }) : 'style-loader!css-loader!mcss-loader',
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loader: 'css-loader',
+        loader: isProd ? ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        }) : 'style-loader!css-loader',
         exclude: /node_modules/
       },
     ]
@@ -82,8 +87,13 @@ if (isProd) {
         NODE_ENV: 'production'
       }
     }),
+    new ExtractTextPlugin({
+      filename: 'hotzone.css',
+      allChunks: true
+    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
+      comments: false,
       compress: {
         warnings: false
       }
