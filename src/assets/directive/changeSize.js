@@ -24,10 +24,10 @@ export default function changeSize(elem) {
 
         let zone = elem.parentNode;
         let setting = self.data.setting;
-        let container = dom.getOffset(zone.parentNode);
+        let container = _.getOffset(zone.parentNode);
         let itemInfo = {
-            width: dom.getOffset(zone).width,
-            height: dom.getOffset(zone).height,
+            width: _.getOffset(zone).width,
+            height: _.getOffset(zone).height,
             top: setting.topPer * container.height,
             left: setting.leftPer * container.width
         };
@@ -99,8 +99,8 @@ export default function changeSize(elem) {
         }
         
         let setting = self.data.setting;
-        let zone = dom.getOffset(elem.parentNode);
-        let container = dom.getOffset(elem.parentNode.parentNode);
+        let zone = _.getOffset(elem.parentNode);
+        let container = _.getOffset(elem.parentNode.parentNode);
 
         if(preContainer && container.width === preContainer.width) {
             return;

@@ -1,5 +1,7 @@
 /* reset */
 .hz-m-modal *, .hz-m-wrap *{
+    font-size: 12px;
+
     /* 清除内外边距 */
     ul, ol, li { margin:0; padding:0; }
 

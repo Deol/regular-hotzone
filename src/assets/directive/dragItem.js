@@ -13,7 +13,7 @@ export default function dragItem(elem) {
     function handleMouseDown(e) {
         e && e.stopPropagation();
         
-        let container = dom.getOffset(elem.parentNode);
+        let container = _.getOffset(elem.parentNode);
         let preX = _.getPageX(e);
         let preY = _.getPageY(e);
         let topPer, leftPer, flag;

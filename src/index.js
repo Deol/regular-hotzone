@@ -37,4 +37,6 @@ const HotZone = REGULAR.extend({
 
 HotZone.component('Zone', Zone);
 
+window.HotZone = HotZone;
+
 export default HotZone;

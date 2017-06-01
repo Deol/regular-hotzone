@@ -57,6 +57,18 @@ _.decimalPoint = (val) => {
 };
 
 /**
+ * 获取节点的宽高
+ * @param  {Object} elem  传入节点
+ * @return {Object}       节点的宽高
+ */
+_.getOffset = function(elem) {
+    return {
+        width: elem.clientWidth,
+        height: elem.clientHeight
+    };
+};
+
+/**
  * 获取兼容过的 pageX
  * @param  {Object} e
  * @return {Number}

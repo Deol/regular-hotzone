@@ -24,7 +24,7 @@ export default function addItem(content) {
             width: 0,
             height: 0
         };
-        let container = dom.getOffset(content);
+        let container = _.getOffset(content);
         // 仅仅在一开始初始化的时候用了一次
         let setting = {
             topPer: _.decimalPoint(itemInfo.top / container.height),

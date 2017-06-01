@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HotZone</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
 </head>
 <body>
     <div id="box"></div>
     <!-- 引入regular.js -->
     <script src="https://rawgit.com/regularjs/regular/master/dist/regular.js"></script>
+    <script src="./dist/hotzone.js"></script>
     <script>
-        import HotZone from './src/hotzone.js';
-        let Page = Regular.extend({
+        var Page = Regular.extend({
             template: '<HotZone image={image} zones={zones} isEdit={isEdit} on-getInfo={this.getInfo($event)}></HotZone>',
             config: function(data) {
                 Object.assign(data, {
-                    image: '',
+                    image: 'http://haitao.nos.netease.com/EbrC2L4UuXFI1CPmWall%20o207T1705221905_1920_1080.jpg',
                     zones: [],
-                    isEdit: false
+                    isEdit: true
                 });
                 this.supr(data);
             }
