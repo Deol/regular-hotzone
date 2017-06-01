@@ -7,12 +7,13 @@
     <title>HotZone</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="./dist/hotzone.min.css">
 </head>
 <body>
     <div id="box"></div>
     <!-- 引入regular.js -->
     <script src="https://rawgit.com/regularjs/regular/master/dist/regular.js"></script>
-    <script src="./dist/hotzone.js"></script>
+    <script src="./dist/hotzone.min.js"></script>
     <script>
         var Page = Regular.extend({
             template: '<HotZone image={image} zones={zones} isEdit={isEdit} on-getInfo={this.getInfo($event)}></HotZone>',

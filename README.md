@@ -8,7 +8,11 @@
 
 Hot Zone with Regularjs.
 
-## Build Setup
+## Require
+
+ - [Regularjs](https://github.com/regularjs/regular)
+
+## Installation
 
 ``` bash
 # install dependencies
@@ -19,4 +23,16 @@ npm run startdev
 
 # build for production with minification
 npm run build
+```
+
+## CDN
+
+[**unpkg**](https://unpkg.com)
+
+```sh
+# css
+https://unpkg.com/regular-hotzone/dist/hotzone.min.css
+
+# js
+https://unpkg.com/regular-hotzone/dist/hotzone.min.js
 ```
