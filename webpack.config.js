@@ -1,3 +1,4 @@
+'use strict';
 let path = require('path');
 let webpack = require('webpack');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -6,65 +7,70 @@ let env = (process.env.NODE_ENV || 'development').trim();
 let isProd = env !== 'development';
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {'hotzone': './src/index.js'},
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
-        library: 'HotZone',
-        libraryTarget: 'umd',
-        filename: 'hotzone.min.js'
+        filename: '[name].min.js',
+        library: 'regularHotZone',
+        libraryTarget: 'umd'
     },
     module: {
         rules: [{
-            test: /\.html$/,
+                test: /\.html$/,
                 // html-loader 导致 regular 解析出问题（<> 等特殊运算符会被转译）
                 // 是否压缩的总开关，false 为关闭，关闭后效果完全等价于 raw-loader
-            loaders: [`rgl-tplmin-loader?${JSON.stringify({
+                loaders: [`rgl-tplmin-loader?${JSON.stringify({
                     minimize: true,
                     comments: {
                         html: false
                     }
                 })}`],
-            exclude: /node_modules/
-        },
-        {
-            test: /\.js$/,
-            loaders: [`babel-loader?${JSON.stringify({
+                exclude: /node_modules/
+            },
+            {
+                test: /\.js$/,
+                loaders: [`babel-loader?${JSON.stringify({
                     presets: ['es2015', 'stage-2'],
                     plugins: ['transform-runtime'],
                     comments: !isProd,              // 开发环境开启注释
                     cacheDirectory: !isProd,        // 开发环境开启缓存
                     compact: true
                 })}`],
-            exclude: /node_modules/
-        },
-        {
-            test: /\.(png|jpg|gif|svg)$/,
-            loader: 'file-loader',
-            options: {
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
                     name: '[name].[ext]?[hash]'
                 }
-        },
-        {
-            test: /\.mcss$/,
-            loader: isProd ? ExtractTextPlugin.extract({
+            },
+            {
+                test: /\.mcss$/,
+                loader: isProd ? ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader!mcss-loader'
                 }) : 'style-loader!css-loader!mcss-loader',
-            exclude: /node_modules/
-        },
-        {
-            test: /\.css$/,
-            loader: isProd ? ExtractTextPlugin.extract({
+                exclude: /node_modules/
+            },
+            {
+                test: /\.css$/,
+                loader: isProd ? ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: 'css-loader'
                 }) : 'style-loader!css-loader',
-            exclude: /node_modules/
-        }
+                exclude: /node_modules/
+            }
         ]
     },
     externals: {
-        regularjs: 'window.Regular'
+        regularjs: {
+            root: 'Regular',
+            commonjs: 'regularjs',
+            commonjs2: 'regularjs',
+            amd: 'regularjs'
+        }
     },
     resolve: {
         extensions: ['.js', '.css', '.json']
@@ -81,8 +87,7 @@ module.exports = {
 };
 
 if (isProd) {
-    module.exports.devtool = '#source-map';
-    // http://vue-loader.vuejs.org/en/workflow/production.html
+    delete module.exports.devtool;
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.DefinePlugin({
             'process.env': {
@@ -90,11 +95,11 @@ if (isProd) {
             }
         }),
         new ExtractTextPlugin({
-            filename: 'hotzone.min.css',
+            filename: '[name].min.css',
             allChunks: true
         }),
         new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
+            sourceMap: false,
             comments: false,
             compress: {
                 warnings: false

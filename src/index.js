@@ -37,4 +37,4 @@ const HotZone = REGULAR.extend({
 
 HotZone.component('Zone', Zone);
 
-export default HotZone;
+module.exports = HotZone;

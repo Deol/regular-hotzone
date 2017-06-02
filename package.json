@@ -2,7 +2,7 @@
     "name": "regular-hotzone",
     "version": "0.1.1",
     "description": "Hot Zone of Regular Components",
-    "main": "dist/hotzone.min.js",
+    "main": "src/index.js",
     "scripts": {
         "startdev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
         "pack": "cross-env NODE_ENV=production webpack --progress --hide-modules",
@@ -24,13 +24,11 @@
         "url": "https://github.com/Deol/regular-hotzone/issues"
     },
     "homepage": "https://github.com/Deol/regular-hotzone#readme",
-    "dependencies": {
-        "regularjs": "^0.6.0-beta.3"
-    },
     "peerDependencies": {
         "regularjs": "^0.6.0-beta.3"
     },
     "devDependencies": {
+        "regularjs": "^0.6.0-beta.3",
         "babel-core": "^6.24.1",
         "babel-loader": "^7.0.0",
         "babel-plugin-transform-runtime": "^6.23.0",
