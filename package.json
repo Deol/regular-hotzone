@@ -1,6 +1,6 @@
 {
   "name": "regular-hotzone",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Hot Zone of Regular Components",
   "main": "dist/hotzone.min.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "pack": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "del": "gulp clean",
     "build": "run-s del pack",
-    "lint": "eslint ./src"
+    "test": "eslint ./src"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/Deol/regular-hotzone#readme",
   "peerDependencies": {
-    "regularjs": "*"
+    "regularjs": "^0.4.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -44,7 +44,7 @@
     "mcss": "^0.5.1",
     "mcss-loader": "^1.0.1",
     "npm-run-all": "^4.0.2",
-    "regularjs": "^0.6.0-beta.3",
+    "regularjs": "^0.4.3",
     "rgl-tplmin-loader": "0.0.14",
     "style-loader": "^0.18.1",
     "webpack": "^2.6.1",
