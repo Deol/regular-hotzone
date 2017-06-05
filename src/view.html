@@ -14,6 +14,7 @@
             index={item_index}
             setting={zones[item_index]}
             on-delItem={this.removeItem($event)}
+            on-changeInfo={this.changeInfo($event)}
         ></Zone>
         {/list}
     </ul>

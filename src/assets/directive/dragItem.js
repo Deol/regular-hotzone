@@ -19,7 +19,7 @@ export default function dragItem(elem) {
         let topPer, leftPer, flag;
 
         // 隐藏 hover 显示的信息
-        self.hideInfo(true);
+        self.hideZone(true);
 
         dom.on(window, 'mousemove', handleChange);
         dom.on(window, 'mouseup', handleMouseUp);
@@ -60,13 +60,13 @@ export default function dragItem(elem) {
             if(flag) {
                 flag = false;
                 dom.css(elem, { transform: 'translate(0, 0)' });
-                self.changeSetting({
+                self.changeInfo({
                     topPer,
                     leftPer
                 });
             }
             // 显示 hover 显示的信息
-            self.hideInfo(false);
+            self.hideZone(false);
 
             dom.off(window, 'mousemove', handleChange);
             dom.off(window, 'mouseup', handleMouseUp);

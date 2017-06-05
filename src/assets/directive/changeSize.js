@@ -36,7 +36,7 @@ export default function changeSize(elem) {
         let flag;
 
         // 隐藏 hover 显示的信息
-        self.hideInfo(true);
+        self.hideZone(true);
 
         dom.on(window, 'mousemove', handleChange);
         dom.on(window, 'mouseup', handleMouseUp);
@@ -73,7 +73,7 @@ export default function changeSize(elem) {
                     widthPer: _.decimalPoint(itemInfo.width / container.width),
                     heightPer: _.decimalPoint(itemInfo.height / container.height)
                 };
-                self.changeSetting(perInfo);
+                self.changeInfo(perInfo);
 
                 // 兼容数据无变更情况下导致 computed 不更新，数据仍为 px 时 resize 出现的问题
                 dom.css(zone, {
@@ -84,7 +84,7 @@ export default function changeSize(elem) {
                 });
             }
             // 显示 hover 显示的信息
-            self.hideInfo(false);
+            self.hideZone(false);
 
             dom.off(window, 'mousemove', handleChange);
             dom.off(window, 'mouseup', handleMouseUp);
@@ -108,22 +108,22 @@ export default function changeSize(elem) {
         preContainer = container;
 
         if(zone.height < MIN_LIMIT) {
-            self.changeSetting({
+            self.changeInfo({
                 heightPer: _.decimalPoint(MIN_LIMIT / container.height)
             });
         }
         if(zone.width < MIN_LIMIT) {
-            self.changeSetting({
+            self.changeInfo({
                 widthPer: _.decimalPoint(MIN_LIMIT / container.width)
             });
         }
         if(setting.topPer + setting.heightPer > 1) {
-            self.changeSetting({
+            self.changeInfo({
                 topPer: 1 - setting.heightPer
             });
         }
         if(setting.leftPer + setting.widthPer > 1) {
-            self.changeSetting({
+            self.changeInfo({
                 leftPer: 1 - setting.widthPer
             });
         }

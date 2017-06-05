@@ -14,20 +14,36 @@ import template from './view.html';
 
 import Zone from './components/zone';
 
+import _ from './assets/util';
 import directive from './assets/directive';
 
 const HotZone = REGULAR.extend({
     template,
+    config(data) {
+        _.extend(data, {
+            isEdit: true,
+            zones: []
+        });
+        this.supr(data);
+    },
+    changeInfo(res) {
+        let {info, index} = res;
+        this.changeItem(info, index);
+    },
     addItem(setting = {}) {
         this.data.zones.push(setting);
-        this.$update();
+        this.hasChange();
     },
     removeItem(index = this.data.zones.length - 1) {
         this.data.zones.splice(index, 1);
-        this.$update();
+        this.hasChange();
     },
     changeItem(info = {}, index = this.data.zones.length - 1) {
         Object.assign(this.data.zones[index], info);
+        this.hasChange();
+    },
+    hasChange() {
+        this.$emit('change', this.data.zones);
         this.$update();
     },
     getInfo() {

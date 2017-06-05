@@ -20,26 +20,32 @@ const ZONE = REGULAR.extend({
     stopPropagation(e) {
         e && e.stopPropagation();
     },
-    changeSetting(info = {}) {
-        Object.assign(this.data.setting, info);
-        this.$update();
-    },
-    hideInfo(isHide = true) {
-        this.data.hideInfo = isHide;
+    hideZone(isHide = true) {
+        this.data.hideZone = isHide;
         this.$update();
     },
     setInfo(e) {
         this.stopPropagation(e);
-        let setting = this.data.setting;
+        let { link, target } = this.data.setting;
         let modal = new Modal({
             data: {
-                link: setting.link,
-                target: setting.target
+                link,
+                target
             }
         });
         modal.$on('ok', (info) => {
-            Object.assign(setting, info);
-            this.$update();
+            this.changeInfo(info);
+        });
+    },
+    /**
+     * 链接设置和 directives 设置用
+     * @param {Object} info 
+     */
+    changeInfo(info = {}) {
+        let { index } = this.data;
+        this.$emit('changeInfo', {
+            info,
+            index
         });
     },
     delItem(e, index) {
