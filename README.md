@@ -8,6 +8,34 @@
 
 A HotZone Component based on [RegularJS](https://github.com/regularjs/regular).
 
+## Installation
+
+```bash
+$ npm install regular-hotzone
+```
+
+## Usage
+
+ - CommonJS
+
+```
+var hotZone = require('regular-hotzone');
+```
+
+ - Global
+
+Include the link and the script in the browser:
+
+```html
+<!-- css -->
+<link rel="stylesheet" href="//unpkg.com/regular-hotzone/dist/hotzone.min.css">
+
+<!-- RegularJS -->
+<script src="https://rawgit.com/regularjs/regular/master/dist/regular.js"></script>
+<!-- the hotZone component -->
+<script src="//unpkg.com/regular-hotzone/dist/hotzone.min.js"></script>
+```
+
 ## CDN
 
 [**unpkg**](https://unpkg.com)
@@ -20,7 +48,7 @@ A HotZone Component based on [RegularJS](https://github.com/regularjs/regular).
 //unpkg.com/regular-hotzone/dist/hotzone.min.js
 ```
 
-## Installation
+## Development
 
 ``` bash
 # install dependencies

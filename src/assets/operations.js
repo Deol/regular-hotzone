@@ -67,20 +67,24 @@ export default {
         let styleInfo = {};
         let width = itemInfo.width - moveX;
         let height = itemInfo.height - moveY;
-        if(width >= minLimit && height >= minLimit) {
-            styleInfo = {
+        if(width >= Math.min(minLimit, itemInfo.width)) {
+            Object.assign(styleInfo, {
                 width,
-                height,
-                top: itemInfo.top + moveY,
                 left: itemInfo.left + moveX
-            };
+            });
+        }
+        if(height >= Math.min(minLimit, itemInfo.height)) {
+            Object.assign(styleInfo, {
+                height,
+                top: itemInfo.top + moveY
+            });
         }
         return styleInfo;
     },
     dealTC(itemInfo, moveX, moveY, minLimit = MIN_LIMIT) {
         let styleInfo = {};
         let height = itemInfo.height - moveY;
-        if(height >= minLimit) {
+        if(height >= Math.min(minLimit, itemInfo.height)) {
             styleInfo = {
                 height,
                 top: itemInfo.top + moveY
@@ -92,33 +96,37 @@ export default {
         let styleInfo = {};
         let width = itemInfo.width + moveX;
         let height = itemInfo.height - moveY;
-        if(width >= minLimit && height >= minLimit) {
-            styleInfo = {
-                width,
+        if(width >= Math.min(minLimit, itemInfo.width)) {
+            Object.assign(styleInfo, {
+                width
+            });
+        }
+        if(height >= Math.min(minLimit, itemInfo.height)) {
+            Object.assign(styleInfo, {
                 height,
                 top: itemInfo.top + moveY
-            };
+            });
         }
         return styleInfo;        
     },
     dealCL(itemInfo, moveX, moveY, minLimit = MIN_LIMIT) {
         let styleInfo = {};
         let width = itemInfo.width - moveX;
-        if(width >= minLimit) {
-            styleInfo = {
+        if(width >= Math.min(minLimit, itemInfo.width)) {
+            Object.assign(styleInfo, {
                 width,
                 left: itemInfo.left + moveX
-            };
+            });
         }
         return styleInfo;
     },
     dealCR(itemInfo, moveX, moveY, minLimit = MIN_LIMIT) {
         let styleInfo = {};
         let width = itemInfo.width + moveX;
-        if(width >= minLimit) {
-            styleInfo = {
+        if(width >= Math.min(minLimit, itemInfo.width)) {
+            Object.assign(styleInfo, {
                 width
-            };
+            });
         }
         return styleInfo;
     },
@@ -126,22 +134,26 @@ export default {
         let styleInfo = {};
         let width = itemInfo.width - moveX;
         let height = itemInfo.height + moveY;
-        if(width >= minLimit && height >= minLimit) {
-            styleInfo = {
+        if(width >= Math.min(minLimit, itemInfo.width)) {
+            Object.assign(styleInfo, {
                 width,
-                height,
                 left: itemInfo.left + moveX
-            };
+            });
+        }
+        if(height >= Math.min(minLimit, itemInfo.height)) {
+            Object.assign(styleInfo, {
+                height
+            });
         }
         return styleInfo;
     },
     dealBC(itemInfo, moveX, moveY, minLimit = MIN_LIMIT) {
         let styleInfo = {};
         let height = itemInfo.height + moveY;
-        if(height >= minLimit) {
-            styleInfo = {
+        if(height >= Math.min(minLimit, itemInfo.height)) {
+            Object.assign(styleInfo, {
                 height
-            };
+            });
         }
         return styleInfo;
     },
@@ -149,11 +161,15 @@ export default {
         let styleInfo = {};
         let width = itemInfo.width + moveX;
         let height = itemInfo.height + moveY;
-        if(width >= minLimit && height >= minLimit) {
-            styleInfo = {
-                width,
+        if(width >= Math.min(minLimit, itemInfo.width)) {
+            Object.assign(styleInfo, {
+                width
+            });
+        }
+        if(height >= Math.min(minLimit, itemInfo.height)) {
+            Object.assign(styleInfo, {
                 height
-            };
+            });
         }
         return styleInfo;
     }

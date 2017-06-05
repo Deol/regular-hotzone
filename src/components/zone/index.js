@@ -52,8 +52,12 @@ const ZONE = REGULAR.extend({
     delItem(e, index) {
         this.$emit('delItem', index);
     },
-    checkLink(link) {
-        window.open(link, '_blank');
+    checkLink(link, target) {
+        if(target) {
+            window.open(link, '_blank');
+        } else {
+            window.location.href = link;
+        }
     },
     // 强计算属性组件，抽取计算属性逻辑
     computed
