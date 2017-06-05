@@ -1,10 +1,17 @@
 /**
  * Created by Aeo on 2017/5/22.
  * 热区组件，使用方式如下：
- * <HotZone image={image} zones={zones} isEdit={isEdit} on-getInfo={this.getInfo($event)}></HotZone>
- * image - 热区图片
- * zones - 热区数据
- * isEdit - 标记当前该组件是否处于编辑状态
+ * <HotZone
+ *     image={image}
+ *     zones={zones}
+ *     isEdit={isEdit}
+ *     on-change={this.change($event)}
+ *     on-getInfo={this.getInfo($event)}
+ * ></HotZone>
+ * image - 热区图片（必传）
+ * zones - 热区数据（也可以利用内置方法 getInfo 进行热区数据获取）
+ * isEdit - 标记当前该组件是否处于编辑状态（默认设置为编辑状态）
+ * on-change - 当热区发生变化时触发
  * on-getInfo - 获取热区数据方法
  */
 import './mcss/index.mcss';

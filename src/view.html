@@ -1,5 +1,9 @@
 {#if image}
-<div class="hz-m-wrap {class}" r-class={{'hz-m-view': !isEdit}}>
+<div
+    class="hz-m-wrap {class}"
+    r-class={{'hz-m-view': !isEdit}}
+    r-resize
+>
     <img class="hz-u-img" src={image} />
     <ul
         class="hz-m-area"

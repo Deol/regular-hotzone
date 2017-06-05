@@ -3,10 +3,32 @@
  * Created by Aeo on 2017/5/25.
  */
 import * as Constant from './constant';
+import _ from './util';
 
 const MIN_LIMIT = Constant.MIN_LIMIT;
 
 export default {
+    /**
+     * 图片尺寸发生变化时对热区进行边界情况处理
+     * @param {Object} zone       热区模块数据
+     * @param {Object} container  图片区域的宽高数据
+     */
+    limitMin(zone, container) {
+        let res = {};
+        if(zone.heightPer * container.height < MIN_LIMIT) {
+            res.heightPer = _.decimalPoint(MIN_LIMIT / container.height);
+        }
+        if(zone.widthPer * container.width < MIN_LIMIT) {
+            res.widthPer = _.decimalPoint(MIN_LIMIT / container.width);
+        }
+        if(res.heightPer && zone.topPer + res.heightPer > 1) {
+            res.topPer = _.decimalPoint(1 - res.heightPer);
+        }
+        if(res.widthPer && zone.leftPer + res.widthPer > 1) {
+            res.leftPer = _.decimalPoint(1 - res.widthPer);
+        }
+        return (res.heightPer || res.widthPer || res.topPer || res.leftPer) && res;
+    },
     /**
      * 改变热区大小时的边界情况处理
      * @param {Object} itemInfo   实际使用的热区模块数据 

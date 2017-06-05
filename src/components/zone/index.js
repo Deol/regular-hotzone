@@ -5,6 +5,7 @@ import REGULAR from 'regularjs';
 import template from './view.html';
 
 import Modal from '../modal';
+
 import computed from './computed';
 import filter from '../../assets/filter';
 import directive from '../../assets/directive';
