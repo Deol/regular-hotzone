@@ -3,12 +3,8 @@
  * @param {Object} elem 
  */
 import { dom } from 'regularjs';
-import * as Constant from '../constant';
 import operations from '../operations';
 import _ from '../util';
-
-// 热区块的最小大小限制
-const MIN_LIMIT = Constant.MIN_LIMIT;
 
 export default function changeSize(elem) {
     let self = this;
@@ -90,44 +86,6 @@ export default function changeSize(elem) {
             dom.off(window, 'mouseup', handleMouseUp);
         }
     };
-
-    // 屏幕大小发生变化时保持最小尺寸
-    let preContainer;
-    dom.on(window, 'resize', () => {
-        if(!elem || !elem.parentNode || !elem.parentNode.parentNode) {
-            return;
-        }
-        
-        let setting = self.data.setting;
-        let zone = _.getOffset(elem.parentNode);
-        let container = _.getOffset(elem.parentNode.parentNode);
-
-        if(preContainer && container.width === preContainer.width) {
-            return;
-        }
-        preContainer = container;
-
-        if(zone.height < MIN_LIMIT) {
-            self.changeInfo({
-                heightPer: _.decimalPoint(MIN_LIMIT / container.height)
-            });
-        }
-        if(zone.width < MIN_LIMIT) {
-            self.changeInfo({
-                widthPer: _.decimalPoint(MIN_LIMIT / container.width)
-            });
-        }
-        if(setting.topPer + setting.heightPer > 1) {
-            self.changeInfo({
-                topPer: 1 - setting.heightPer
-            });
-        }
-        if(setting.leftPer + setting.widthPer > 1) {
-            self.changeInfo({
-                leftPer: 1 - setting.widthPer
-            });
-        }
-    });
 
     return () => {
         dom.off(elem, 'mousedown', handleMouseDown);
