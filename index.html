@@ -19,7 +19,7 @@
     <!-- usage -->
     <script>
         var Page = Regular.extend({
-            template: '<HotZone image={image} zones={zones} isEdit={isEdit} on-getInfo={this.getInfo($event)}></HotZone>',
+            template: '<HotZone image={image} zones={zones} isEdit={isEdit} on-change={this.change($event)} on-itemClick={this.itemClick($event)}></HotZone>',
             config: function(data) {
                 Object.assign(data, {
                     image: 'http://haitao.nos.netease.com/EbrC2L4UuXFI1CPmWall%20o207T1705221905_1920_1080.jpg',
@@ -27,6 +27,12 @@
                     isEdit: true
                 });
                 this.supr(data);
+            },
+            itemClick: function(index) {
+                console.log('zones[' + index + '] has been clicked.');
+            },
+            change: function(index) {
+                console.log('changed!');
             }
         });
         Page.component('HotZone', regularHotZone);

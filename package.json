@@ -6,7 +6,7 @@
   "scripts": {
     "startdev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "pack": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "del": "gulp clean",
+    "del": "rm -rf ./dist/**/*",
     "build": "run-s del pack",
     "test": "eslint ./src"
   },
@@ -35,12 +35,10 @@
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.0.0",
     "css-loader": "^0.28.4",
-    "del": "^2.2.2",
     "element-resize-detector": "^1.1.12",
     "eslint": "^3.19.0",
     "eslint-config-kaola": "^0.1.3",
     "extract-text-webpack-plugin": "^2.1.0",
-    "gulp": "^3.9.1",
     "mcss": "^0.5.1",
     "mcss-loader": "^1.0.1",
     "npm-run-all": "^4.0.2",

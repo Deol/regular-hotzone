@@ -16,8 +16,10 @@
             class="hz-m-item"
             isEdit={isEdit}
             index={item_index}
+            hasCallback={hasCallback}
             setting={zones[item_index]}
             on-delItem={this.removeItem($event)}
+            on-itemClick={this.itemClick($event)}
             on-changeInfo={this.changeInfo($event)}
         ></Zone>
         {/list}

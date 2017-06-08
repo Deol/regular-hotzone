@@ -27,16 +27,21 @@ const ZONE = REGULAR.extend({
     },
     setInfo(e) {
         this.stopPropagation(e);
+        let { hasCallback, index } = this.data;
         let { link, target } = this.data.setting;
-        let modal = new Modal({
-            data: {
-                link,
-                target
-            }
-        });
-        modal.$on('ok', (info) => {
-            this.changeInfo(info);
-        });
+        if(hasCallback) {
+            this.$emit('itemClick', index);
+        } else {
+            let modal = new Modal({
+                data: {
+                    link,
+                    target
+                }
+            });
+            modal.$on('ok', (info) => {
+                this.changeInfo(info);
+            });
+        }
     },
     /**
      * 链接设置和 directives 设置用
