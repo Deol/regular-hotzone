@@ -14,7 +14,7 @@ function getInfoBefore(pos, size) {
     if(size > 0.5) {
         return '50%';
     }
-    if(pos + size < 0.75) {
+    if(pos + size / 2 < 0.5) {
         return '100%';
     }
     return 'initial';
@@ -25,7 +25,7 @@ function getInfoBefore(pos, size) {
  * @param {Number} size 
  */
 function getInfoAfter(pos, size) {
-    if(size < 0.5 && pos + size > 0.75) {
+    if(size < 0.5 && pos + size / 2 > 0.5) {
         return '100%';
     }
     return 'initial';
@@ -44,6 +44,7 @@ export default {
     zoneHeight() {
         return getZoneStyle(this.data.setting.heightPer);
     },
+    
     infoTop() {
         let {topPer, heightPer} = this.data.setting;
         return getInfoBefore(topPer, heightPer);
@@ -64,6 +65,7 @@ export default {
         let setting = this.data.setting;
         return `translate(${setting.widthPer > 0.5 ? -50 : 0}%, ${setting.heightPer > 0.5 ? -50 : 0}%)`;
     },
+    
     tooSmall() {
         // 创造新热区模块时，不显示所有的拖拽点
         let setting = this.data.setting;

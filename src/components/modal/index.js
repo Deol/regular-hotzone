@@ -12,7 +12,7 @@ let Modal = REGUILAR.extend({
     checkUrl: _.checkUrl,
     config(data) {
         _.extend(data, {
-            link: 'http://',
+            link: 'https://',
             isUrl: true
         });
         this.supr(data);

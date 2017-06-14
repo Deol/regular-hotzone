@@ -44,7 +44,7 @@
         on-mousedown={this.stopPropagation($event)}
         r-style={{top: infoTop, bottom: infoBottom, left: infoLeft, right: infoRight, transform: infoTransform}}
     >
-        <li>跳转链接：<a href={setting.link} target="_blank" title={setting.link}>点击跳转</a></li>
+        <li>跳转链接：<a href={setting.link} target="_blank" title={setting.link}>{setting.link}</a></li>
         <li>打开方式：{setting.target | jumpWay}</li>
     </ul>
     {/if}
@@ -63,7 +63,7 @@
         class="hz-m-info"
         r-style={{top: infoTop, bottom: infoBottom, left: infoLeft, right: infoRight, transform: infoTransform}}
     >
-        <li>跳转链接：<a href={setting.link} target="_blank" title={setting.link}>点击跳转</a></li>
+        <li>跳转链接：<a href={setting.link} target="_blank" title={setting.link}>{setting.link}</a></li>
         <li>打开方式：{setting.target | jumpWay}</li>
     </ul>
     {/if}

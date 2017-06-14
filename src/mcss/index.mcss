@@ -43,6 +43,13 @@
       text-decoration: underline;
       cursor: pointer;
       color: #fff;
+      word-break: break-word;
+      white-space: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
       &:hover {
         text-decoration: underline;
       }
