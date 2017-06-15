@@ -16,7 +16,7 @@ export default function resizeImg(elem) {
     function resize() {
         let container = _.getOffset(elem);
         let zones = self.data.zones || [];
-        if(!zones.length) {
+        if(!zones.length || !container.height || !container.width) {
             return;
         }
         

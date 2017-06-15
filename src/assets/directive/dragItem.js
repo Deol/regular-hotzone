@@ -32,6 +32,8 @@ export default function dragItem(elem) {
             let moveX = _.getPageX(e) - preX;
             let moveY = _.getPageY(e) - preY;
             
+            setting.topPer = setting.topPer || 0;
+            setting.leftPer = setting.leftPer || 0;
             topPer = _.decimalPoint(moveY / container.height + setting.topPer);
             leftPer = _.decimalPoint(moveX / container.width + setting.leftPer);
 

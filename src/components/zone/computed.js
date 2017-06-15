@@ -3,7 +3,7 @@
  * @param {Number} val 
  */
 function getZoneStyle(val) {
-    return `${val * 100}%`;
+    return `${(val || 0) * 100}%`;
 }
 /**
  * 通过热区的 top && left 值决定 hover 信息的 top && left 值

@@ -22,10 +22,10 @@ export default function changeSize(elem) {
         let setting = self.data.setting;
         let container = _.getOffset(zone.parentNode);
         let itemInfo = {
-            width: _.getOffset(zone).width,
-            height: _.getOffset(zone).height,
-            top: setting.topPer * container.height,
-            left: setting.leftPer * container.width
+            width: _.getOffset(zone).width || 0,
+            height: _.getOffset(zone).height || 0,
+            top: setting.topPer * container.height || 0,
+            left: setting.leftPer * container.width || 0
         };
         let preX = _.getPageX(e);
         let preY = _.getPageY(e);
