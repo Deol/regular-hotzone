@@ -11,6 +11,7 @@
                 <span class="hz-formitem_tt">跳转链接：</span>
                 <div class="hz-formitem_ct">
                     <input
+                        r-autofocus
                         ref="link"
                         type="text"
                         title={link}
@@ -30,13 +31,12 @@
                 <span class="hz-formitem_tt">打开方式：</span>
                 <label class="hz-formitem_ct hz-u-label">
                     <input type="checkbox" r-model={target | toNum}>
-                    新窗口打开
+                    新开页面
                 </label>
             </div>
         </div>
         <div class="hz-modal_ft">
             <button
-                r-autofocus
                 on-click={this.ok(link, target)}
                 class="hz-u-btn hz-u-btn-primary"
             >确认</button>
