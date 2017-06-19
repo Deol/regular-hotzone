@@ -1,6 +1,6 @@
 {
   "name": "regular-hotzone",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Hot Zone of Regular Components",
   "main": "dist/hotzone.min.js",
   "scripts": {
