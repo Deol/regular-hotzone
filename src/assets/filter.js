@@ -32,7 +32,7 @@ export default {
     jumpWay(target) {
         let info = {
             0: '当前页面打开',
-            1: '新窗口打开'
+            1: '新开页面'
         };
         return info[target];
     }
