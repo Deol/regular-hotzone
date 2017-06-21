@@ -64,6 +64,9 @@ const ZONE = REGULAR.extend({
             window.location.href = link;
         }
     },
+    notRange(row, col) {
+        return row !== '100%' || col !== '100%'; 
+    },
     // 强计算属性组件，抽取计算属性逻辑
     computed
 })

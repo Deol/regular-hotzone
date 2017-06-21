@@ -6,15 +6,15 @@ function getZoneStyle(val) {
     return `${(val || 0) * 100}%`;
 }
 /**
- * 通过热区的 top && left 值决定 hover 信息的 top && left 值
+ * 通过热区的 topPer && leftPer 值决定 hover 信息的 top && left 值
  * @param {Number} pos 
  * @param {Number} size 
  */
-function getInfoBefore(pos, size) {
-    if(size > 0.5) {
+function getInfoBefore(posPer, sizePer) {
+    if(sizePer > 0.5) {
         return '50%';
     }
-    if(pos + size / 2 < 0.5) {
+    if(posPer + sizePer / 2 < 0.5) {
         return '100%';
     }
     return 'initial';
@@ -24,14 +24,15 @@ function getInfoBefore(pos, size) {
  * @param {Number} pos 
  * @param {Number} size 
  */
-function getInfoAfter(pos, size) {
-    if(size < 0.5 && pos + size / 2 > 0.5) {
+function getInfoAfter(posPer, sizePer) {
+    if(sizePer < 0.5 && posPer + sizePer / 2 > 0.5) {
         return '100%';
     }
     return 'initial';
 }
 
 export default {
+    // 热区位置数据
     zoneTop() {
         return getZoneStyle(this.data.setting.topPer);
     },
@@ -45,6 +46,7 @@ export default {
         return getZoneStyle(this.data.setting.heightPer);
     },
     
+    // 热区 hover 信息位置及 transform 数据
     infoTop() {
         let {topPer, heightPer} = this.data.setting;
         return getInfoBefore(topPer, heightPer);
@@ -65,9 +67,9 @@ export default {
         let setting = this.data.setting;
         return `translate(${setting.widthPer > 0.5 ? -50 : 0}%, ${setting.heightPer > 0.5 ? -50 : 0}%)`;
     },
-    
+
+    // 拉取新热区时，拖拽点全部不显示
     tooSmall() {
-        // 创造新热区模块时，不显示所有的拖拽点
         let setting = this.data.setting;
         return setting.widthPer < 0.01 && setting.heightPer < 0.01;
     }

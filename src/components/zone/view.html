@@ -6,6 +6,23 @@
     on-dblclick={this.setInfo($event)}
     r-style={{top: zoneTop, left: zoneLeft, width: zoneWidth, height: zoneHeight}}
 >
+    {#if setting.link}
+    <ul class="hz-m-bridge">
+        <li class="hz-u-bridge-tl" r-hide={this.notRange(infoBottom, infoRight)}></li>
+        <li class="hz-u-bridge-tr" r-hide={this.notRange(infoBottom, infoLeft)}></li>
+        <li class="hz-u-bridge-bl" r-hide={this.notRange(infoTop, infoRight)}></li>
+        <li class="hz-u-bridge-br" r-hide={this.notRange(infoTop, infoLeft)}></li>
+    </ul>
+    <ul
+        class="hz-m-info"
+        r-hide={hideZone}
+        on-mousedown={this.stopPropagation($event)}
+        r-style={{top: infoTop, bottom: infoBottom, left: infoLeft, right: infoRight, transform: infoTransform}}
+    >
+        <li>跳转链接：<a href={setting.link} target={setting.target | getTarget} title={setting.link}>{setting.link}</a></li>
+        <li>打开方式：{setting.target | jumpWay}</li>
+    </ul>
+    {/if}
     <ul
         r-changeSize
         class="hz-m-box"
@@ -37,36 +54,32 @@
         <li class="hz-u-square hz-u-square-bc" data-pointer="dealBC"></li>
         <li class="hz-u-square hz-u-square-br" data-pointer="dealBR"></li>
     </ul>
-    {#if setting.link}
-    <ul
-        class="hz-m-info"
-        r-hide={hideZone}
-        on-mousedown={this.stopPropagation($event)}
-        r-style={{top: infoTop, bottom: infoBottom, left: infoLeft, right: infoRight, transform: infoTransform}}
-    >
-        <li>跳转链接：<a href={setting.link} target="_blank" title={setting.link}>{setting.link}</a></li>
-        <li>打开方式：{setting.target | jumpWay}</li>
-    </ul>
-    {/if}
 </li>
 {#else}
 <li
     class={class}
-    on-click={this.checkLink(setting.link, setting.target)}
     r-style={{top: zoneTop, left: zoneLeft, width: zoneWidth, height: zoneHeight}}
 >
-    <ul class="hz-m-box" title={setting.link}>
-        <li class="hz-u-tip">点击热区跳转</li>
-    </ul>
     {#if setting.link}
+    <ul class="hz-m-bridge">
+        <li class="hz-u-bridge-tl" r-hide={this.notRange(infoBottom, infoRight)}></li>
+        <li class="hz-u-bridge-tr" r-hide={this.notRange(infoBottom, infoLeft)}></li>
+        <li class="hz-u-bridge-bl" r-hide={this.notRange(infoTop, infoRight)}></li>
+        <li class="hz-u-bridge-br" r-hide={this.notRange(infoTop, infoLeft)}></li>
+    </ul>
     <ul
         class="hz-m-info"
         r-style={{top: infoTop, bottom: infoBottom, left: infoLeft, right: infoRight, transform: infoTransform}}
     >
-        <li>跳转链接：<a href={setting.link} target="_blank" title={setting.link}>{setting.link}</a></li>
+        <li>跳转链接：<a href={setting.link} target={setting.target | getTarget} title={setting.link}>{setting.link}</a></li>
         <li>打开方式：{setting.target | jumpWay}</li>
     </ul>
     {/if}
+    <a class="hz-u-link" href={setting.link} target={setting.target | getTarget}>
+        <ul class="hz-m-box" title={setting.link}>
+            <li class="hz-u-tip">点击热区跳转</li>
+        </ul>
+    </a>
 </li>
 {/if}
 {/if}

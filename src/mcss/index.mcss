@@ -23,7 +23,7 @@
     position: absolute;
     display: block;
     &:hover {
-      .hz-m-info {
+      .hz-m-bridge, .hz-m-info {
         display: block;
       }
     }
@@ -54,6 +54,12 @@
       &:hover {
         text-decoration: underline;
       }
+    }
+  }
+  .hz-u-link {
+    color: #333;
+    &:hover {
+      text-decoration: none;
     }
   }
   .hz-m-box {
@@ -154,6 +160,32 @@
       bottom: -5px;
       right: -5px;
       cursor: se-resize;
+    }
+  }
+  .hz-m-bridge {
+    display: none;
+    cursor: default;
+    li {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background: transparent;
+    }
+    .hz-u-bridge-tl {
+      top: -18px;
+      left: -18px;
+    }
+    .hz-u-bridge-tr {
+      top: -18px;
+      right: -18px;
+    }
+    .hz-u-bridge-bl {
+      bottom: -18px;
+      left: -18px;
+    }
+    .hz-u-bridge-br {
+      bottom: -18px;
+      right: -18px;
     }
   }
   .hz-j-hidden {

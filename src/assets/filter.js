@@ -35,5 +35,16 @@ export default {
             1: '新开页面'
         };
         return info[target];
+    },
+    /**
+     * 跳转方式的实际 target
+     * @param {Number} target 
+     */
+    getTarget(target) {
+        let info = {
+            0: '_self',
+            1: '_blank'
+        };
+        return info[target];
     }
 };
