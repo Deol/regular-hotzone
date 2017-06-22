@@ -34,6 +34,9 @@ let Modal = REGUILAR.extend({
             this.$refs.link.blur();
             this.ok(link, target);
         }
+        if (e.keyCode === 27 || e.which === 27) {
+            this.cancel();
+        }
     },
     ok(link, target) {
         this.data.isUrl = this.checkUrl(link);

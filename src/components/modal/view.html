@@ -1,7 +1,7 @@
 <div class="hz-m-modal">
     <div class="hz-modal_dialog">
         <div class="hz-modal_hd">
-            <a class="hz-modal_close" on-click={this.cancel()}>
+            <a title="ESC键也可以关闭哦" class="hz-modal_close" on-click={this.cancel()}>
                 <i class="hz-u-icon hz-u-icon-close">×</i>
             </a>
             <h3 class="hz-modal_title">热区设置</h3>
@@ -37,11 +37,13 @@
         </div>
         <div class="hz-modal_ft">
             <button
+                title="回车键也可以确认哦"
                 on-click={this.ok(link, target)}
                 class="hz-u-btn hz-u-btn-primary"
             >确认</button>
             <button
                 class="hz-u-btn"
+                title="ESC键也可以取消哦"
                 on-click={this.cancel()}
             >取消</button>
         </div>

@@ -3,7 +3,6 @@
 <li
     r-dragItem
     class={class}
-    on-dblclick={this.setInfo($event)}
     r-style={{top: zoneTop, left: zoneLeft, width: zoneWidth, height: zoneHeight}}
 >
     {#if setting.link}
@@ -27,6 +26,7 @@
         r-changeSize
         class="hz-m-box"
         title="双击设置连接"
+        on-dblclick={this.setInfo($event)}
         r-class={{'hz-j-hidden': tooSmall}}
     >
         {#if !setting.link && !setting.hasSet}

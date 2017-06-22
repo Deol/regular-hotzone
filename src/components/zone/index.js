@@ -18,12 +18,12 @@ const ZONE = REGULAR.extend({
         }
         this.supr(data);
     },
-    stopPropagation(e) {
-        e && e.stopPropagation();
-    },
     hideZone(isHide = true) {
         this.data.hideZone = isHide;
         this.$update();
+    },
+    stopPropagation(e) {
+        e && e.stopPropagation();
     },
     setInfo(e) {
         this.stopPropagation(e);
@@ -56,13 +56,6 @@ const ZONE = REGULAR.extend({
     },
     delItem(e, index) {
         this.$emit('delItem', index);
-    },
-    checkLink(link, target) {
-        if(target) {
-            window.open(link, '_blank');
-        } else {
-            window.location.href = link;
-        }
     },
     notRange(row, col) {
         return row !== '100%' || col !== '100%'; 
