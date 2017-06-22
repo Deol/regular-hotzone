@@ -29,7 +29,7 @@
         title="双击设置连接"
         r-class={{'hz-j-hidden': tooSmall}}
     >
-        {#if !setting.link || !setting.hasSet}
+        {#if !setting.link && !setting.hasSet}
         <li class="hz-u-tip">双击设置链接</li>
         {/if}
         <li

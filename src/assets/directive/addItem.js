@@ -71,6 +71,8 @@ export default function addItem(content) {
                     widthPer: _.decimalPoint(itemInfo.width / container.width),
                     heightPer: _.decimalPoint(itemInfo.height / container.height)
                 });
+                // 创建热区后默认弹出数据设置框
+                self.setItem();
             } else {
                 self.removeItem();
             }

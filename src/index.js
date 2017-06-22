@@ -43,11 +43,16 @@ const HotZone = REGULAR.extend({
     },
     addItem(setting = {}) {
         this.data.zones.push(setting);
+        this.$emit('add', setting);
         this.hasChange();
     },
     removeItem(index = this.data.zones.length - 1) {
         this.data.zones.splice(index, 1);
+        this.$emit('remove', index);
         this.hasChange();
+    },
+    setItem(index = this.data.zones.length - 1) {
+        this.$refs[`zone_${index}`].setInfo();
     },
     changeItem(info = {}, index = this.data.zones.length - 1) {
         Object.assign(this.data.zones[index], info);

@@ -17,6 +17,7 @@
             isEdit={isEdit}
             index={item_index}
             hasCallback={hasCallback}
+            ref={'zone_' + item_index}
             setting={zones[item_index]}
             on-delItem={this.removeItem($event)}
             on-itemClick={this.itemClick($event)}
