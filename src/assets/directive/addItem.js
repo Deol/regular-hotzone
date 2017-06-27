@@ -64,13 +64,21 @@ export default function addItem(content) {
         };
 
         function handleMouseUp() {
-            if(itemInfo.width > MIN_LIMIT && itemInfo.height > MIN_LIMIT) {
-                self.changeItem({
-                    topPer: _.decimalPoint(itemInfo.top / container.height),
-                    leftPer: _.decimalPoint(itemInfo.left / container.width),
-                    widthPer: _.decimalPoint(itemInfo.width / container.width),
-                    heightPer: _.decimalPoint(itemInfo.height / container.height)
-                });
+            let perInfo = {
+                topPer: _.decimalPoint(itemInfo.top / container.height),
+                leftPer: _.decimalPoint(itemInfo.left / container.width),
+                widthPer: _.decimalPoint(itemInfo.width / container.width),
+                heightPer: _.decimalPoint(itemInfo.height / container.height)
+            };
+            if(container.height < MIN_LIMIT && itemInfo.width > MIN_LIMIT) {
+                self.changeItem(Object.assign(perInfo, {
+                    topPer: 0,
+                    heightPer: 1
+                }));
+                // 创建热区后默认弹出数据设置框
+                self.setItem();
+            } else if(itemInfo.width > MIN_LIMIT && itemInfo.height > MIN_LIMIT) {
+                self.changeItem(perInfo);
                 // 创建热区后默认弹出数据设置框
                 self.setItem();
             } else {
