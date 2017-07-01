@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <!-- import hotzone.css -->
     <link rel="stylesheet" href="./dist/hotzone.min.css">
+    <style>
+        background {
+            background-color: #f4f4f4;
+        }
+        #box {
+            margin: 40px;
+        }
+    </style>
 </head>
 <body>
     <div id="box"></div>
@@ -19,7 +27,7 @@
     <!-- usage -->
     <script>
         var Page = Regular.extend({
-            template: '<HotZone image={image} zones={zones} isEdit={isEdit} on-change={this.change($event)} on-itemClick={this.itemClick($event)}></HotZone>',
+            template: '<HotZone image={image} zones={zones} isEdit={isEdit} on-change={this.change($event)}></HotZone>',
             config: function(data) {
                 Object.assign(data, {
                     image: 'http://haitao.nos.netease.com/EbrC2L4UuXFI1CPmWall%20o207T1705221905_1920_1080.jpg',
@@ -27,9 +35,6 @@
                     isEdit: true
                 });
                 this.supr(data);
-            },
-            itemClick: function(index) {
-                console.log('zones[' + index + '] has been clicked.');
             },
             change: function(index) {
                 console.log('changed!');

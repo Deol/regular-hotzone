@@ -8,6 +8,9 @@
 
 A HotZone Component based on [RegularJS](https://github.com/regularjs/regular).
 
+## DEMO
+[http://aeodu.com/regular-hotzone](http://aeodu.com/regular-hotzone)
+
 ## Installation
 
 ```bash
