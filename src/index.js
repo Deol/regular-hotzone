@@ -72,4 +72,7 @@ const HotZone = REGULAR.extend({
 
 HotZone.component('Zone', Zone);
 
+// 将热区信息组件挂载方便外部拓展
+HotZone.Zone = Zone;
+
 module.exports = HotZone;
