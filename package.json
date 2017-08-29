@@ -2,12 +2,13 @@
   "name": "regular-hotzone",
   "version": "0.1.14",
   "description": "Hot Zone of Regular Components",
-  "main": "dist/hotzone.min.js",
+  "main": "dist/hotzone.total.js",
   "scripts": {
     "startdev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "pack": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "packall": "cross-env webpack --progress --hide-modules --config  ./config/webpack.total.js",            
     "del": "rm -rf ./dist/**/*",
-    "build": "run-s del pack",
+    "build": "run-s del pack packall",
     "test": "eslint ./src"
   },
   "repository": {
