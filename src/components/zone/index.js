@@ -27,7 +27,7 @@ const ZONE = REGULAR.extend({
     },
     setInfo(e) {
         this.stopPropagation(e);
-        let { hasCallback, index } = this.data;
+        let { hasCallback, index, config } = this.data;
         let { link, target } = this.data.setting;
         if(hasCallback) {
             this.$emit('itemClick', index);
@@ -35,7 +35,8 @@ const ZONE = REGULAR.extend({
             let modal = new Modal({
                 data: {
                     link,
-                    target
+                    target,
+                    config
                 }
             });
             modal.$on('ok', (info) => {

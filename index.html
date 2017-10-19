@@ -27,20 +27,32 @@
     <!-- usage -->
     <script>
         var Page = Regular.extend({
-            template: '<HotZone image={image} zones={zones} isEdit={isEdit} on-change={this.change($event)}></HotZone>',
+            template: `<HotZone
+                            image={image}
+                            zones={zones}
+                            config={config}
+                            isEdit={isEdit}
+                            on-erase={this.erase($event)}
+                            on-change={this.change($event)}
+                        ></HotZone>`,
             config: function(data) {
                 Object.assign(data, {
                     image: 'http://haitao.nos.netease.com/EbrC2L4UuXFI1CPmWall%20o207T1705221905_1920_1080.jpg',
                     zones: [],
+                    config: {
+                        pattern: 'www\.kaola\.com'
+                    },
                     isEdit: true
                 });
                 this.supr(data);
             },
-            change: function(index) {
+            erase: function(index) {
+                console.log('erase!index:', index);
+            },
+            change: function() {
                 console.log('changed!');
             }
-        });
-        Page.component('HotZone', regularHotZone);
+        }).component('HotZone', regularHotZone);
         new Page({data: {}}).$inject(document.getElementById('box'));
     </script>
 </body>

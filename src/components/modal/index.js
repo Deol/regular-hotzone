@@ -13,7 +13,8 @@ let Modal = REGUILAR.extend({
     config(data) {
         _.extend(data, {
             link: 'https://',
-            isUrl: true
+            isUrl: true,
+            config: {}
         });
         this.supr(data);
     },
@@ -39,7 +40,7 @@ let Modal = REGUILAR.extend({
         }
     },
     ok(link, target) {
-        this.data.isUrl = this.checkUrl(link);
+        this.data.isUrl = this.checkUrl(link, this.data.config.pattern);
         if(!this.data.isUrl) {
             return;
         }

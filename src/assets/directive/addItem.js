@@ -77,12 +77,19 @@ export default function addItem(content) {
                 }));
                 // 创建热区后默认弹出数据设置框
                 self.setItem();
+            } else if(container.width < MIN_LIMIT && itemInfo.height > MIN_LIMIT) {
+                self.changeItem(Object.assign(perInfo, {
+                    leftper: 0,
+                    widthPer: 1
+                }));
+                // 创建热区后默认弹出数据设置框
+                self.setItem();
             } else if(itemInfo.width > MIN_LIMIT && itemInfo.height > MIN_LIMIT) {
                 self.changeItem(perInfo);
                 // 创建热区后默认弹出数据设置框
                 self.setItem();
             } else {
-                self.removeItem();
+                self.eraseItem();
             }
             dom.off(window, 'mousemove', handleChange);
             dom.off(window, 'mouseup', handleMouseUp);

@@ -29,13 +29,14 @@ _.extend = (o1, o2, override = false) => {
  * @param {String} url
  * @return {Boolean} 返回判断结果
  */
-_.checkUrl = (url) => {
-    let pattern = new RegExp('^(http[s]?:\\/\\/)' +           // 协议（必须填写 http 或者 https）
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // 域名
-        '((\\d{1,3}\\.){3}\\d{1,3}))' +                       // IP 地址
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +                   // 端口和通道
-        '(\\?[\\d\\D]*)?' +                                   // 查询参数(允许一切字符)
-        '(\\#[-a-z\\d_]*)?$', 'ig');                          // 锚点
+_.checkUrl = (url, patternStr) => {
+    let pattern = new RegExp(patternStr ||
+        '^((.*?:)?\\/\\/)' +                                    // 协议（有无协议皆可，不对协议类型做强校验）
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' +   // 域名
+        '((\\d{1,3}\\.){3}\\d{1,3}))' +                         // IP 地址
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +                     // 端口和通道
+        '(\\?[\\d\\D]*)?' +                                     // 查询参数(允许一切字符)
+        '(\\#[-a-z\\d_]*)?$', 'ig');                            // 锚点
     return pattern.test(url);
 };
 
@@ -52,7 +53,7 @@ _.getMultiple = () => {
  * @param  {Number} num  传入的待处理数字
  * @return {Number}      处理后返回的数字
  */
-_.decimalPoint = (val) => {
+_.decimalPoint = (val = 0) => {
     return Math.round(val * _.getMultiple()) / _.getMultiple();
 };
 
@@ -61,10 +62,10 @@ _.decimalPoint = (val) => {
  * @param  {Object} elem  传入节点
  * @return {Object}       节点的宽高
  */
-_.getOffset = function(elem) {
+_.getOffset = function(elem = {}) {
     return {
-        width: elem.clientWidth,
-        height: elem.clientHeight
+        width: elem.clientWidth || 0,
+        height: elem.clientHeight || 0
     };
 };
 
@@ -73,7 +74,7 @@ _.getOffset = function(elem) {
  * @param  {Object} e
  * @return {Number}
  */
-_.getPageX = (e) => {
+_.getPageX = (e = {}) => {
     return e.hasOwnProperty('pageX') ? e.pageX : e.touches[0].pageX;
 };
 
@@ -82,7 +83,7 @@ _.getPageX = (e) => {
  * @param  {Object} e
  * @return {Number}
  */
-_.getPageY = (e) => {
+_.getPageY = (e = {}) => {
     return e.hasOwnProperty('pageY') ? e.pageY : e.touches[0].pageY;
 };
 
@@ -92,7 +93,7 @@ _.getPageY = (e) => {
  * @param  {Object} container   目标节点
  * @return {Number}             鼠标点击处距离目标节点起点的横坐标
  */
-_.getDistanceX = (e, container) => {
+_.getDistanceX = (e = {}, container = {}) => {
     return _.getPageX(e) - (container.getBoundingClientRect().left + window.pageXOffset);
 };
 
@@ -102,7 +103,7 @@ _.getDistanceX = (e, container) => {
  * @param  {Object} container   目标节点
  * @return {Number}             鼠标点击处距离目标节点起点的纵坐标
  */
-_.getDistanceY = (e, container) => {
+_.getDistanceY = (e = {}, container = {}) => {
     return _.getPageY(e) - (container.getBoundingClientRect().top + window.pageYOffset);
 };
 
