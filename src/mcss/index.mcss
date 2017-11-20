@@ -70,11 +70,24 @@
     background: #3bd4fc;
     font-size: 12px;
     cursor: pointer;
-    opacity: .5;
+    opacity: .7;
     &:hover {
       .hz-u-close {
         display: block;
       }
+    }
+    .hz-u-index {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 18px;
+      height: 18px;
+      line-height: 16px;
+      color: #fff;
+      font-size: 12px;
+      background: #000;
+      user-select: none;
+      text-align: center;
     }
     .hz-u-close {
       display: none;

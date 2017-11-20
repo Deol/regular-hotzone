@@ -9,17 +9,20 @@
  *     on-erase={this.erase($event)}
  *     on-change={this.change($event)}
  *     on-getInfo={this.getInfo($event)}
+ *     on-overRange={this.overRange($event)}
  *     on-itemClick={this.itemClick($event)}
  * ></HotZone>
  * image - 热区图片（必传）
  * zones - 热区数据（也可以利用内置方法 getInfo 进行热区数据获取）
  * isEdit - 标记当前该组件是否处于编辑状态（默认设置为编辑状态）
  * config {
+ *     maxNum - 最多支持的热区数量
  *     pattern - 链接的正则校验规则
  * } - 配置信息
  * on-erase - 当拖拽生成的区域小于设定的边界值，不生成该区域
  * on-change - 当热区发生变化时触发
  * on-getInfo - 获取热区数据方法
+ * on-overRange - 当达到最大热区数量时，不生成该热区
  * on-itemClick - 当该方法存在时，不弹出 Modal，直接 emit 出选中热区的下标
  */
 import './mcss/index.mcss';
@@ -55,6 +58,14 @@ const HotZone = REGULAR.extend({
     },
     eraseItem(index = this.data.zones.length - 1) {
         this.$emit('erase', index);
+        this.removeItem(index);
+    },
+    isOverRange() {
+        let { config = {}, zones = [] } = this.data;
+        return config.hasOwnProperty('maxNum') && zones.length > config.maxNum;
+    },
+    overRange(index = this.data.zones.length - 1) {
+        this.$emit('overRange', index);
         this.removeItem(index);
     },
     removeItem(index = this.data.zones.length - 1) {

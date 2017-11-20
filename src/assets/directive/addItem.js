@@ -70,7 +70,9 @@ export default function addItem(content) {
                 widthPer: _.decimalPoint(itemInfo.width / container.width),
                 heightPer: _.decimalPoint(itemInfo.height / container.height)
             };
-            if(container.height < MIN_LIMIT && itemInfo.width > MIN_LIMIT) {
+            if(self.isOverRange()) {
+                self.overRange();
+            } else if(container.height < MIN_LIMIT && itemInfo.width > MIN_LIMIT) {
                 self.changeItem(Object.assign(perInfo, {
                     topPer: 0,
                     heightPer: 1
