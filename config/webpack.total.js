@@ -59,7 +59,7 @@ module.exports = {
             root: 'Regular',
             commonjs: 'regularjs',
             commonjs2: 'regularjs',
-            amd: 'Regular'
+            amd: 'regularjs'
         }
     },
     resolve: {

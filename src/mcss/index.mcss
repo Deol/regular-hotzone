@@ -70,7 +70,7 @@
     background: #3bd4fc;
     font-size: 12px;
     cursor: pointer;
-    opacity: .7;
+    opacity: .6;
     &:hover {
       .hz-u-close {
         display: block;
