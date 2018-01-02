@@ -1,6 +1,6 @@
 /**
  * 拖拽元素 directive
- * @param {Object} elem 
+ * @param {Object} elem
  */
 import { dom } from 'regularjs';
 import _ from '../util';
@@ -18,9 +18,6 @@ export default function dragItem(elem) {
         let preY = _.getPageY(e);
         let topPer, leftPer, flag;
 
-        // 隐藏 hover 显示的信息
-        self.hideZone(true);
-
         dom.on(window, 'mousemove', handleChange);
         dom.on(window, 'mouseup', handleMouseUp);
 
@@ -28,10 +25,13 @@ export default function dragItem(elem) {
             e && e.preventDefault();
             flag = true;
 
+            // 隐藏 hover 显示的信息
+            self.hideZone(true);
+
             let setting = self.data.setting;
             let moveX = _.getPageX(e) - preX;
             let moveY = _.getPageY(e) - preY;
-            
+
             setting.topPer = setting.topPer || 0;
             setting.leftPer = setting.leftPer || 0;
             topPer = _.decimalPoint(moveY / container.height + setting.topPer);
@@ -54,7 +54,7 @@ export default function dragItem(elem) {
                 leftPer = 1 - setting.widthPer;
                 moveX = container.width * (leftPer - setting.leftPer);
             }
-            
+
             dom.css(elem, { transform: `translate(${moveX}px, ${moveY}px)` });
         };
 

@@ -1,6 +1,8 @@
 @import './_reset.mcss';
+@import './iconfont.mcss';
 
 .hz-m-wrap {
+  $size = 24px;
   position: relative;
   /*overflow: hidden;*/
   .hz-u-img {
@@ -36,7 +38,7 @@
     opacity: .8;
     color: #fff;
     z-index: 10;
-    background: #000;
+    background-color: #000;
     cursor: default;
     user-select: none;
     white-space: nowrap;
@@ -56,123 +58,155 @@
       }
     }
   }
-  .hz-u-link {
-    color: #333;
+  .hz-m-link {
+    color: #fff;
     &:hover {
       text-decoration: none;
     }
   }
   .hz-m-box {
+    $color = #e31414;
+    $settedColor = #373950;
     position: relative;
     width: 100%;
     height: 100%;
     box-shadow: 0 0 6px #000;
-    background: #3bd4fc;
+    background-color: $color;
     font-size: 12px;
     cursor: pointer;
-    opacity: .6;
-    &:hover {
-      background: #19b2da;
-      .hz-u-close {
-        display: block;
+    color: #fff;
+    opacity: .8;
+    & > li {
+      position: absolute;
+      text-align: center;
+      user-select: none;
+    }
+    &.hz-z-hidden > li {
+      display: none;
+    }
+    &.hz-m-hoverbox {
+      &:hover {
+        box-shadow: 0 0 0 2px $settedColor;
+      }
+      .hz-icon:hover {
+        background-color: $settedColor;
+      }
+    }
+    &.hz-m-settedbox {
+      background-color: $settedColor;
+      &.hz-m-hoverbox {
+        &:hover {
+          box-shadow: 0 0 0 2px $color;
+        }
+        .hz-icon:hover {
+          background-color: $color;
+        }
+      }
+    }
+    .hz-icon {
+      width: $size;
+      height: $size;
+      line-height: $size;
+      font-size: 20px;
+      text-align: center;
+      &:hover {
+        background-color: $color;
+        opacity: 0.8;
       }
     }
     .hz-u-index {
-      position: absolute;
       top: 0;
       left: 0;
-      width: 18px;
-      height: 18px;
-      line-height: 16px;
-      color: #fff;
-      font-size: 12px;
-      background: #000;
-      user-select: none;
-      text-align: center;
-    }
-    .hz-u-close {
-      display: none;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 18px;
-      height: 18px;
-      line-height: 16px;
-      color: #fff;
-      font-size: 18px;
-      background: #000;
-      user-select: none;
-      text-align: center;
-    }
-    .hz-u-edit {
-      position: absolute;
-      bottom: 4px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 24px;
-      height: 24px;
-      background: url(//haitao.nos.netease.com/049e5b9c-8b72-4a75-9b34-5dcece11ab19.svg) no-repeat;
-      background-size: 100% 100%;
+      width: $size;
+      height: $size;
+      line-height: $size;
+      background-color: #000;
     }
     .hz-u-tip {
-      position: absolute;
       top: 50%;
-      transform: translateY(-50%);
       width: 100%;
-      user-select: none;
-      text-align: center;
+      transform: translateY(-50%);
+    }
+    .hz-u-close {
+      top: 0;
+      right: 0;
+    }
+    .hz-m-btns {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .hz-m-copy {
+      display: inline-block;
+    }
+    .hz-icon-edit, .hz-icon-copy {
+      display: inline-block;
+      border-radius: 2px;
+      box-sizing: border-box;
+      border: 1px solid rgba(255, 255, 255, .4);
+    }
+    .hz-small-icon {
+      border: 0;
+      border-radius: 0;
     }
     .hz-u-square {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      opacity: .5;
-      user-select: none;
-      background-color: #fff;
-      border: 1px solid #25c3eb;
+      $squareSize = 8px;
+      width: $squareSize;
+      height: $squareSize;
+      opacity: .8;
+      &:after {
+        content: '';
+        position: absolute;
+        top: $squareSize * .25;
+        left: $squareSize * .25;
+        width: $squareSize * .5;
+        height: $squareSize * .5;
+        border-radius: $squareSize * .5;
+        background-color: #fff;
+      }
     }
     .hz-u-square-tl {
-      top: -5px;
-      left: -5px;
+      top: -4px;
+      left: -4px;
       cursor: nw-resize;
     }
     .hz-u-square-tc {
-      top: -5px;
+      top: -4px;
       left: 50%;
       transform: translateX(-50%);
       cursor: n-resize;
     }
     .hz-u-square-tr {
-      top: -5px;
-      right: -5px;
+      top: -4px;
+      right: -4px;
       cursor: ne-resize;
     }
     .hz-u-square-cl {
       top: 50%;
-      left: -5px;
+      left: -4px;
       transform: translateY(-50%);
       cursor: w-resize;
     }
     .hz-u-square-cr {
       top: 50%;
-      right: -5px;
+      right: -4px;
       transform: translateY(-50%);
       cursor: w-resize;
     }
     .hz-u-square-bl {
-      bottom: -5px;
-      left: -5px;
+      bottom: -4px;
+      left: -4px;
       cursor: sw-resize;
     }
     .hz-u-square-bc {
-      bottom: -5px;
+      bottom: -4px;
       left: 50%;
       transform: translateX(-50%);
       cursor: s-resize;
     }
     .hz-u-square-br {
-      bottom: -5px;
-      right: -5px;
+      bottom: -4px;
+      right: -4px;
       cursor: se-resize;
     }
   }
@@ -200,11 +234,6 @@
     .hz-u-bridge-br {
       bottom: -18px;
       right: -18px;
-    }
-  }
-  .hz-j-hidden {
-    li {
-      display: none;
     }
   }
 }

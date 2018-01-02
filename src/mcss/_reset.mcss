@@ -90,3 +90,6 @@ html.z-modal,html.z-modal body{overflow:hidden;}
 
 /* margin */
 .hz-f-ml0{margin-bottom:0;}
+
+/* replicator */
+.hz-u-copy input[data-for-copy]{transform:translateZ(0);position:fixed;bottom:0;right:0;width:1px;height:1px;opacity:0;overflow:hidden;z-index:-999;color:transparent;background-color:transparent;border:none;outline:none;}

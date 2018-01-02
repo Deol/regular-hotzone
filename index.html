@@ -32,27 +32,59 @@
                             zones={zones}
                             config={config}
                             isEdit={isEdit}
+                            on-add={this.add($event)}
                             on-erase={this.erase($event)}
                             on-change={this.change($event)}
+                            on-remove={this.remove($event)}
+                            on-overRange={this.overRange($event)}
+                            on-copyError={this.copyError($event)}
+                            on-copySuccess={this.copySuccess($event)}
                         ></HotZone>`,
             config: function(data) {
                 Object.assign(data, {
                     image: 'http://haitao.nos.netease.com/EbrC2L4UuXFI1CPmWall%20o207T1705221905_1920_1080.jpg',
-                    zones: [],
+                    zones: [
+                        {
+                            topPer: 0.3076,                 // 顶部距离
+                            leftPer: 0.1777,                // 左边距离
+                            widthPer: 0.1521,               // 热区宽度
+                            heightPer: 0.3559,              // 热区高度
+                            link: "http://www.kaola.com",   // 热区链接
+                            target: 1                       // 跳转方式，0 - 当前页面打开，1 - 新页面打开
+                        }
+                    ],
                     config: {
-                        pattern: 'www\.kaola\.com'
+                        maxNum: 20,     // 最多支持的热区数量
+                        showCopy: true, // 是否显示复制按钮（默认为 false）
+                        pattern: ''     // 链接的正则校验规则
                     },
-                    isEdit: true
+                    isEdit: true        // 是否显示编辑态
                 });
                 this.supr(data);
             },
-            erase: function(index) {
-                console.log('erase!index:', index);
+            add: function(zone) {
+                console.log('成功添加热区：', zone);
             },
-            change: function() {
-                console.log('changed!');
-            }
-        }).component('HotZone', regularHotZone);
+            erase: function(index) {
+                console.log('拖拽生成的区域小于设定的边界值，不生成该区域：', index);
+            },
+            change: function(zones) {
+                console.log('热区发生变化：', zones);
+            },
+            remove: function(index) {
+                console.log('成功删除热区：', index);
+            },
+            overRange: function(index) {
+                console.log('达到最大热区数量：', index);
+            },
+            copyError: function(e) {
+                console.log('复制失败', e);
+            },
+            copySuccess: function(text) {
+                console.log('成功复制到剪切板：', text);
+            },
+        });
+        Page.component('HotZone', regularHotZone);
         new Page({data: {}}).$inject(document.getElementById('box'));
     </script>
 </body>

@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/Deol/regular-hotzone#readme",
   "peerDependencies": {
+    "clipboard": "^1.7.1",
     "regularjs": "^0.4.3"
   },
   "devDependencies": {

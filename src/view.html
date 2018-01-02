@@ -1,5 +1,6 @@
 {#if image}
 <div
+    ref="content"
     class="hz-m-wrap {class}"
     r-class={{'hz-m-view': !isEdit}}
     r-resize
@@ -23,6 +24,8 @@
             on-delItem={this.removeItem($event)}
             on-itemClick={this.itemClick($event)}
             on-changeInfo={this.changeInfo($event)}
+            on-copySuccess={this.copySuccess($event)}
+            on-copyError={this.copyError($event)}
         ></Zone>
         {/list}
     </ul>

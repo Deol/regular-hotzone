@@ -1,3 +1,5 @@
+import * as Constant from '../../assets/constant';
+
 /**
  * 将小数转换为百分比字符串
  * @param {Number} val
@@ -72,5 +74,19 @@ export default {
     tooSmall() {
         let setting = this.data.setting;
         return setting.widthPer < 0.01 && setting.heightPer < 0.01;
+    },
+
+    // 当热区区域小于限定值时，去除按钮的外边距，并隐藏文字提示
+    btnsMinWidth() {
+        let { removeSpacing = false } = this.data;
+        return `${Constant.MIN_LIMIT + (removeSpacing ? 0 : Constant.BTN_HORIZONTAL_SPACING)}px`;
+    },
+    editBtnMargin() {
+        let { removeSpacing = false } = this.data;
+        return removeSpacing ? '0' : `0 ${Constant.BTN_HORIZONTAL_SPACING * 0.5}px ${Constant.BTN_VERTICAL_SPACING}px 0`;
+    },
+    copyBtnMargin() {
+        let { removeSpacing = false } = this.data;
+        return removeSpacing ? '0' : `0 0 ${Constant.BTN_VERTICAL_SPACING}px ${Constant.BTN_HORIZONTAL_SPACING * 0.5}px`;
     }
 };

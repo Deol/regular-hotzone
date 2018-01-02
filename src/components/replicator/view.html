@@ -1,0 +1,9 @@
+<div id="{id}" class="hz-u-copy {class}" title={title} on-click={this._onClick($event)} data-copy={copyText} r-hide={!visible}>
+{#if this.$body}
+    {#inc this.$body}
+{#else}
+    <span>{btnText||'复制'}</span>
+{/if}
+    <input ref="input" data-for-copy="true" r-model={copyText} type="text">
+    <!-- 这里的input的type不能为hidden，display不能为none -->
+</div>
