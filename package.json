@@ -1,6 +1,6 @@
 {
   "name": "regular-hotzone",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Hot Zone of Regular Components",
   "main": "dist/hotzone.total.js",
   "scripts": {

@@ -22,9 +22,9 @@
     <div id="box"></div>
     <!-- import RegularJS -->
     <script src="https://unpkg.com/regularjs@0.4.3/dist/regular.min.js"></script>
-    <!-- import Clipboard -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script> -->
+    <!-- import Clipboard: only if config.showCopy === true -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script> -->
     <!-- <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.7.1/dist/clipboard.min.js"></script> -->
     <!-- import the hotZone component -->
     <script src="./dist/hotzone.min.js"></script>
@@ -59,7 +59,7 @@
                     ],
                     config: {
                         maxNum: 20,     // 最多支持的热区数量
-                        showCopy: true, // 是否显示复制按钮（默认为 false）
+                        showCopy: true, // 是否显示复制按钮（init: false），为 true 时需要同时引入 clipboard
                         pattern: ''     // 链接的正则校验规则
                     },
                     isEdit: true        // 是否显示编辑态

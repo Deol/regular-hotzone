@@ -1,6 +1,6 @@
 # regular-hotzone
 
-[![version](https://img.shields.io/npm/v/regular-hotzone.svg)](https://www.npmjs.com/package/regular-hotzone) 
+[![version](https://img.shields.io/npm/v/regular-hotzone.svg)](https://www.npmjs.com/package/regular-hotzone)
 [![Build Status](https://img.shields.io/travis/Deol/regular-hotzone.svg)](https://travis-ci.org/Deol/regular-hotzone)
 [![Github licences](https://img.shields.io/github/license/Deol/regular-hotzone.svg)](https://github.com/Deol/regular-hotzone/blob/master/LICENSE)
 
@@ -14,7 +14,10 @@ A HotZone Component based on [RegularJS](https://github.com/regularjs/regular).
 ## Installation
 
 ```bash
-$ npm install regular-hotzone
+$ npm install regularjs regular-hotzone
+
+# only if hotzone.config.showCopy === true
+$ npm install clipboard
 ```
 
 ## Usage
