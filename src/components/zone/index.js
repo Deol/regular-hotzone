@@ -7,9 +7,11 @@ import template from './view.html';
 import Modal from '../modal';
 import Replicator from '../replicator';
 
+import _ from '../../assets/util';
 import computed from './computed';
 import filter from '../../assets/filter';
 import directive from '../../assets/directive';
+import operations from '../../assets/operations';
 import * as Constant from '../../assets/constant';
 
 const ZONE = REGULAR.extend({
@@ -19,13 +21,37 @@ const ZONE = REGULAR.extend({
             data.setting.target = 1;
         }
         this.supr(data);
+        this.$watch(['setting.heightPer', 'setting.widthPer'], (newVal) => {
+            newVal && setTimeout(() => {
+                let container = _.getOffset(this.$parent.$refs.content);
+                this.checkSize(data.setting, container);
+            }, 0);
+        });
     },
-    hideZone(isHide = true) {
-        if(this.data.hideZone === isHide) {
+    checkSize(info = {}, container = {}) {
+        let { MIN_LIMIT, MIDDLE_TEXT_HEIGHT, BTN_VERTICAL_SPACING, BTN_HORIZONTAL_SPACING } = Constant;
+        let smallHeight = MIN_LIMIT + BTN_VERTICAL_SPACING + MIDDLE_TEXT_HEIGHT;
+        let smallWdith = MIN_LIMIT + BTN_HORIZONTAL_SPACING;
+
+        // 修改按钮样式，小于最小限制时隐藏文字，并去除按钮间距和边框
+        if (container.height * info.heightPer <= smallHeight ||
+            container.width * info.widthPer <= smallWdith) {
+            this.removeSpacing(true);
+        } else {
+            this.removeSpacing(false);
+        }
+
+        // 新宽高的尺寸限制处理
+        if(!container.height || !container.width ||
+            container.height < MIN_LIMIT || container.width < MIN_LIMIT) {
             return;
         }
-        this.data.hideZone = isHide;
-        this.$update();
+        let res = operations.limitMin(info, container);
+        if(res) {
+            Object.assign(this.data.setting, res);
+            this.changeInfo(res);
+            this.$update();
+        }
     },
     removeSpacing(isRemove = true) {
         if(this.data.removeSpacing === isRemove) {
@@ -34,15 +60,12 @@ const ZONE = REGULAR.extend({
         this.data.removeSpacing = isRemove;
         this.$update();
     },
-    adjustSpacing(info = {}, container = {}) {
-        let { MIN_LIMIT, MIDDLE_TEXT_HEIGHT, BTN_VERTICAL_SPACING, BTN_HORIZONTAL_SPACING } = Constant;
-        let smallHeight = MIN_LIMIT + BTN_VERTICAL_SPACING + MIDDLE_TEXT_HEIGHT;
-        let smallWdith = MIN_LIMIT + BTN_HORIZONTAL_SPACING;
-        if(container.height * info.heightPer <= smallHeight || container.width * info.widthPer <= smallWdith) {
-            this.removeSpacing(true);
-        } else {
-            this.removeSpacing(false);
+    hideZone(isHide = true) {
+        if(this.data.hideZone === isHide) {
+            return;
         }
+        this.data.hideZone = isHide;
+        this.$update();
     },
     stopPropagation(e) {
         e && e.stopPropagation();

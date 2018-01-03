@@ -85,11 +85,6 @@ const HotZone = REGULAR.extend({
     },
     changeItem(info = {}, index = this.data.zones.length - 1) {
         Object.assign(this.data.zones[index], info);
-        // 如果宽度和高度都被变更了，则检查是否需要调整热区按钮间隔大小
-        if(info.hasOwnProperty('heightPer') && info.hasOwnProperty('widthPer')) {
-            let container = _.getOffset(this.$refs.content);
-            this.$refs[`zone_${index}`].adjustSpacing(info, container);
-        }
         this.hasChange();
     },
     hasChange() {

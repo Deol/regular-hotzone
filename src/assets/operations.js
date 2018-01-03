@@ -27,11 +27,15 @@ export default {
         if(res.widthPer && zone.leftPer + res.widthPer > 1) {
             res.leftPer = _.decimalPoint(1 - res.widthPer);
         }
-        return (res.heightPer || res.widthPer || res.topPer || res.leftPer) && res;
+        return ((res.hasOwnProperty('heightPer') && res.heightPer !== zone.heightPer)
+            || (res.hasOwnProperty('widthPer') && res.widthPer !== zone.widthPer)
+            || (res.hasOwnProperty('topPer') && res.topPer !== zone.topPer)
+            || (res.hasOwnProperty('leftPer') && res.leftPer !== zone.leftPer))
+            && res;
     },
     /**
      * 改变热区大小时的边界情况处理
-     * @param {Object} itemInfo   实际使用的热区模块数据 
+     * @param {Object} itemInfo   实际使用的热区模块数据
      * @param {Object} styleInfo  操作中的热区模块数据
      * @param {Object} container  图片区域的宽高数据
      */
@@ -58,8 +62,8 @@ export default {
     },
     /**
      * 处理不同的拖拽点，大写字母表示含义：T-top，L-left，C-center，R-right，B-bottom
-     * @param  {Object} itemInfo 
-     * @param  {Number} moveX 
+     * @param  {Object} itemInfo
+     * @param  {Number} moveX
      * @param  {Number} moveY
      * @return {Object} 对过程数据进行处理
      */
@@ -107,7 +111,7 @@ export default {
                 top: itemInfo.top + moveY
             });
         }
-        return styleInfo;        
+        return styleInfo;
     },
     dealCL(itemInfo, moveX, moveY, minLimit = MIN_LIMIT) {
         let styleInfo = {};

@@ -44,8 +44,8 @@ _.checkUrl = (url, patternStr) => {
  * 获取 10 的常量值次方的幂结果
  * @return {Number}
  */
-_.getMultiple = () => {
-    return Math.pow(10, Constant.DECIMAL_PLACES);
+_.getMultiple = (decimalPlaces = Constant.DECIMAL_PLACES) => {
+    return Math.pow(10, decimalPlaces);
 };
 
 /**
@@ -54,7 +54,7 @@ _.getMultiple = () => {
  * @return {Number}      处理后返回的数字
  */
 _.decimalPoint = (val = 0) => {
-    return Math.round(val * _.getMultiple()) / _.getMultiple();
+    return Math.round(val * _.getMultiple()) / _.getMultiple() || 0;
 };
 
 /**
