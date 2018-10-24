@@ -67,7 +67,7 @@ export default {
     },
     infoTransform() {
         let setting = this.data.setting;
-        return `translate(${setting.widthPer >= 0.5 ? -50 : 0}%, ${setting.heightPer >= 0.5 ? -50 : 0}%)`;
+        return `translate(${setting.widthPer >= 0.5 ? -50 : 0}%, ${setting.heightPer >= 0.5 ? (setting.widthPer >= 0.5 ? -100 : -50) : 0}%)`;
     },
 
     // 拉取新热区时，拖拽点全部不显示
