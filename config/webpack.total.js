@@ -27,7 +27,7 @@ module.exports = {
         {
             test: /\.js$/,
             loaders: [`babel-loader?${JSON.stringify({
-                presets: ['es2015', 'stage-2'],
+                presets: ['env'],
                 plugins: ['transform-runtime'],
                 comments: false,
                 cacheDirectory: false,
